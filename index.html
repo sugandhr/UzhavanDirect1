@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uzhavan Direct — Direct Farmer-to-Customer Marketplace</title>
+  <meta name="description" content="Direct farmer-to-customer fresh produce marketplace. Browse fresh produce from local farmers, choose what you need, and place orders instantly with zero middlemen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="top-announcement">
+    <div class="announcement-content">
+      <span class="pulse-dot"></span>
+      <strong>Fresh Daily Sourcing:</strong> Direct farm pickup & morning gate deliveries available every day
+    </div>
+  </aside>
+
+  <!-- Header Navigation -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo">🌱</div>
+        <div>
+          <span class="brand-title">Uzhavan Direct</span>
+          <span class="brand-sub">Direct Farm Marketplace</span>
+        </div>
+      </div>
+
+      <nav class="nav-links" id="navTabs">
+        <button class="nav-btn active" data-view="marketplace">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 22"/></svg>
+          Resident Store
+        </button>
+        <button class="nav-btn" data-view="gate">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="m9 16 2 2 4-4"/></svg>
+          Gate Pickup Desk
+        </button>
+        <button class="nav-btn" data-view="farmer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Farmer Portal
+        </button>
+      </nav>
+
+      <div class="header-actions">
+        <button class="cart-trigger-btn" id="openCartBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+          <span>My Cart</span>
+          <span class="cart-pill" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Container -->
+  <main class="main-content">
+    
+    <!-- VIEW 1: RESIDENT STORE MARKETPLACE -->
+    <section id="marketplace-view" class="view-panel active">
+      
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-icon">🌾</span> Direct From Local Farms • Fresh Daily
+          </div>
+          <h1>Fresh Farm Produce, Available to Buy Direct</h1>
+          <p>Browse fresh produce from local farmers, choose exactly what you need, and place your order instantly — no group waiting, no middlemen.</p>
+          
+          <div class="hero-info-widget">
+            <div class="info-widget-header">
+              <span class="pulse-dot"></span>
+              <strong>Fresh Today • Sourced Directly</strong>
+            </div>
+            <div class="info-widget-sub">
+              Order what you need • Direct farm rates & morning gate delivery
+            </div>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span class="stat-value" id="totalActiveBatches">15</span>
+              <span class="stat-label">Available Products</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value" id="avgSavingsStat">36%</span>
+              <span class="stat-label">Avg Savings</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value">100%</span>
+              <span class="stat-label">Direct Farm Pay</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="hero-image-card">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80" alt="Fresh Organic Produce Harvest" class="hero-img" />
+            <div class="hero-img-badge">
+              <span>📍 Annur & Pollachi Farm Belts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toolbar: Search & Category Chips -->
+      <div class="toolbar">
+        <div class="search-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="searchInput" placeholder="Search vegetables, fruits, grains, dairy, or spices..." />
+        </div>
+        
+        <div class="category-tabs" id="categoryFilterBar">
+          <!-- Dynamically populated chips with counts -->
+        </div>
+      </div>
+
+      <!-- Catalog Grid -->
+      <div class="catalog-grid" id="catalogGrid">
+        <!-- Dynamic Product Cards Injected via JS -->
+      </div>
+    </section>
+
+    <!-- VIEW 2: GATE PICKUP & SECURITY DESK -->
+    <section id="gate-view" class="view-panel">
+      <div class="section-header">
+        <div>
+          <h2>Gate Pickup & Security Desk Ledger</h2>
+          <p>Mark collections, review incoming produce, and verify customer orders.</p>
+        </div>
+        <button class="btn-outline print-gate-btn" id="printGateBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+          Print Gate Sheet
+        </button>
+      </div>
+
+      <div class="desk-stats-grid">
+        <div class="dash-stat-card">
+          <span class="dash-stat-num" id="gateOrdersCount">0</span>
+          <span class="dash-stat-title">Total Customer Orders</span>
+        </div>
+        <div class="dash-stat-card">
+          <span class="dash-stat-num" id="gateCollectedCount">0</span>
+          <span class="dash-stat-title">Orders Picked Up</span>
+        </div>
+        <div class="dash-stat-card">
+          <span class="dash-stat-num" id="gatePendingCount">0</span>
+          <span class="dash-stat-title">Pending Pickups</span>
+        </div>
+        <div class="dash-stat-card">
+          <span class="dash-stat-num" id="gateTotalAmount">₹0</span>
+          <span class="dash-stat-title">Total Farmer Payments</span>
+        </div>
+      </div>
+
+      <div class="panel-box">
+        <div class="table-search">
+          <input type="text" id="gateTableSearch" placeholder="Filter by Flat Number, Customer Name, or Produce Item..." />
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Flat No.</th>
+                <th>Customer</th>
+                <th>Produce Breakdown & Qty</th>
+                <th>Amount (₹)</th>
+                <th>Status</th>
+                <th class="print-hide">Action</th>
+              </tr>
+            </thead>
+            <tbody id="gateTableBody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: FARMER PRODUCE & INVENTORY ADMIN -->
+    <section id="farmer-view" class="view-panel">
+      <div class="section-header">
+        <div>
+          <h2>Farmer Produce & Inventory Manager</h2>
+          <p>List available produce, manage inventory stock, and monitor real-time sales.</p>
+        </div>
+      </div>
+
+      <div class="admin-layout">
+        <!-- Produce Batch Listing Form -->
+        <div class="panel-box">
+          <h3 class="panel-title">List New Farm Produce</h3>
+          <form id="createBatchForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Item Name (Tamil / English)</label>
+                <input type="text" id="prodName" placeholder="e.g. Country Brinjal (நாட்டு கத்தரி)" required />
+              </div>
+              <div class="form-group">
+                <label>Category</label>
+                <select id="prodCategory" required>
+                  <option value="vegetables">Fresh Vegetables</option>
+                  <option value="staples">Heirloom Grains & Millets</option>
+                  <option value="fruits">Native Fruits & Coconuts</option>
+                  <option value="dairy">Cold-Pressed Oils & Farm Dairy</option>
+                  <option value="spices">Native Spices & Sweeteners</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Farmer Name & Village</label>
+                <input type="text" id="prodFarmer" placeholder="e.g. Palaniswamy • Annur Village" required />
+              </div>
+              <div class="form-group">
+                <label>Unit Type</label>
+                <select id="prodUnit" required>
+                  <option value="kg">Per kg</option>
+                  <option value="bunch">Per Bunch</option>
+                  <option value="litre">Per Litre</option>
+                  <option value="piece">Per Piece</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Direct Farm Price (₹)</label>
+                <input type="number" id="prodPrice" placeholder="32" min="1" required />
+              </div>
+              <div class="form-group">
+                <label>Supermarket Price (₹)</label>
+                <input type="number" id="prodMarketPrice" placeholder="55" min="1" required />
+              </div>
+              <div class="form-group">
+                <label>Available Quantity / Stock</label>
+                <input type="number" id="prodTarget" placeholder="85" min="1" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Produce Image URL (Optional)</label>
+              <input type="url" id="prodImage" placeholder="https://images.unsplash.com/... or leave empty for auto image" />
+            </div>
+
+            <button type="submit" class="btn-primary full-width">Publish Produce</button>
+          </form>
+        </div>
+
+        <!-- Inventory Radar -->
+        <div class="panel-box">
+          <h3 class="panel-title">Farm Produce Inventory</h3>
+          <div class="quota-cards-list" id="farmerQuotaTracker">
+            <!-- Dynamic Inventory Injected via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SLIDE-OVER CART DRAWER -->
+  <div class="cart-drawer-backdrop" id="cartBackdrop">
+    <aside class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3>My Cart</h3>
+        <button class="icon-close-btn" id="closeCartBtn">&times;</button>
+      </div>
+
+      <div class="cart-items-container" id="cartItemsList">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="cart-drawer-footer">
+        <div class="cart-summary-line">
+          <span>Total Direct Farm Price</span>
+          <strong id="cartTotalPrice">₹0</strong>
+        </div>
+        <div class="cart-savings-line" id="cartSavingsNotice">
+          You are saving approx ₹0 vs supermarket retail
+        </div>
+
+        <form id="checkoutForm" class="checkout-form">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="chkName" placeholder="e.g. Anand R" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Flat / Door No.</label>
+              <input type="text" id="chkFlat" placeholder="e.g. B-302" required />
+            </div>
+            <div class="form-group">
+              <label>Mobile Number</label>
+              <input type="tel" id="chkMobile" placeholder="e.g. 9876543210" pattern="[0-9]{10}" required />
+            </div>
+          </div>
+          <button type="submit" class="btn-primary full-width" id="confirmCheckoutBtn">
+            Confirm & Place Order
+          </button>
+        </form>
+      </div>
+    </aside>
+  </div>
+
+  <!-- GATE PASS & UPI QR MODAL -->
+  <div class="modal-backdrop" id="passModal">
+    <div class="modal-card">
+      <button class="icon-close-btn modal-close-pos" id="closePassModal">&times;</button>
+      <div class="pass-stamp">Verified Customer Pickup Pass</div>
+      <h2 id="passFlatDisplay">Flat B-302</h2>
+      <p class="pass-sub" id="passMetaDisplay">Order #UZH-000 • Anand R</p>
+
+      <div class="qr-block">
+        <img id="passQrImg" alt="UPI Payment QR Code" />
+        <span class="qr-hint">Scan with GPay / PhonePe / Paytm at Gate Pickup Desk</span>
+      </div>
+
+      <div class="pass-breakdown" id="passItemsBreakdown">
+        <!-- Injected via JS -->
+      </div>
+
+      <div class="pass-actions">
+        <button class="btn-outline full-width" id="passWhatsAppBtn">
+          Share Order Details to WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE ACTIVITY TOAST NOTIFICATION -->
+  <div class="live-toast" id="liveToast">
+    <div class="toast-avatar">🌾</div>
+    <div class="toast-content">
+      <div class="toast-title" id="toastTitle">🛒 New Order Placed</div>
+      <div class="toast-body" id="toastBody">A customer just ordered 2 kg Country Tomatoes</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div class="footer-col brand-col">
+        <div class="brand">
+          <div class="brand-logo">🌱</div>
+          <div>
+            <span class="brand-title">Uzhavan Direct</span>
+            <span class="brand-sub">Direct Farm Marketplace</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Connecting local farmers directly with individual customers. Fresh produce, fair farmer prices, and simple farm-to-home purchasing.
+        </p>
+        <div class="village-pills">
+          <span class="v-pill">📍 Annur</span>
+          <span class="v-pill">📍 Pollachi</span>
+          <span class="v-pill">📍 Dharapuram</span>
+          <span class="v-pill">📍 Thanjavur</span>
+          <span class="v-pill">📍 Erode</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Produce Categories</h4>
+        <ul class="footer-links" id="footerCatLinks">
+          <li><a href="#marketplace" data-cat-link="vegetables">Fresh Native Vegetables</a></li>
+          <li><a href="#marketplace" data-cat-link="staples">Heirloom Grains & Millets</a></li>
+          <li><a href="#marketplace" data-cat-link="fruits">Native Fruits & Coconuts</a></li>
+          <li><a href="#marketplace" data-cat-link="dairy">Cold-Pressed Oils & Farm Dairy</a></li>
+          <li><a href="#marketplace" data-cat-link="spices">Native Spices & Sweeteners</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Collective Impact</h4>
+        <div class="footer-impact-box">
+          <div class="impact-stat">
+            <strong>₹14.2 Lakhs</strong>
+            <span>Directly paid to 84 village farmers</span>
+          </div>
+          <div class="impact-stat">
+            <strong>3.8 Tons</strong>
+            <span>Chemical-free produce harvested</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col developer-col">
+        <h4>About the Developer</h4>
+        <div class="developer-block">
+          <div class="dev-name">Sugandh R</div>
+          <div class="dev-degree">B.Tech Artificial Intelligence & Data Science</div>
+          <div class="dev-college">Rathinam Technical Campus</div>
+          <p class="dev-quote">"Designed and developed this platform to connect local farmers directly with individual customers and make fresh farm purchasing simpler."</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Uzhavan Direct Farm Collective. Direct Farmer-to-Customer Marketplace.</span>
+      <span>Empowering Village Agriculture</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
